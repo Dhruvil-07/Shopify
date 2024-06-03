@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const AuthService = require("./AuthService/Auth.service");
 
 //env file
 require("dotenv").config();

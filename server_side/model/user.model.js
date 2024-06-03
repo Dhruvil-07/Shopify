@@ -60,6 +60,21 @@ UserSchema.pre('save',async function(next){
 });
 
 
+//password match
+UserSchema.method.comparepwd = async function(entredpwd , userpwd)
+{
+    try
+    {
+        const isMatch = await bcrypt.compare(userpwd,entredpwd);
+        return isMatch;
+    }
+    catch(err)
+    {
+        consol.log(err);
+    }
+}
+
+
 //user model 
 const UserModel = mongoose.model('users',UserSchema);
 
