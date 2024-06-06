@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const UserModel = require("../model/user.model");
 const AuthService = require("../AuthService/Auth.service");
-
+const ErrorHandlerclass = require('../utils/ErrorHandler');
 
 //creation contoller
-async function User_Create(req,res)
+async function User_Create(req,res,next)
 {   
     try
     {
@@ -15,8 +15,9 @@ async function User_Create(req,res)
     }
     catch(err)
     {
-        console.log(err);
-        return res.status(500).json({status:"fail",msg:err});
+        console.log(err.message);
+        console.log(err.code);
+        next(err);
     }
 }
 
