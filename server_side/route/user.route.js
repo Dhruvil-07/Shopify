@@ -19,7 +19,7 @@ router.post('/reg',trycatchHandler(UserController.User_Create));
 router.get('/',AuthService.VerifyToken,trycatchHandler(UserController.GetAllUser));
 
 //user detail get route
-router.get('/:id',AuthService.VerifyToken,trycatchHandler(UserController.UserDtl));
+router.get('/:id', AuthService.VerifyToken,trycatchHandler(UserController.UserDtl));
 
 //user delete route
 router.delete('/:id',AuthService.VerifyToken,UserController.User_Delete);

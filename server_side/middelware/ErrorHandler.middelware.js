@@ -11,7 +11,7 @@ const ErrorMiddelware = (err,req,res,next)=>{
     }
 
     //id invalid -> id legth is not match with mobgo db id length
-    if(err.code === undefined && err.statuscode === 500)
+    if(err.name === 'CastError')
     {
         err.message = "Invalid Id";
         err.statuscode = 401;
