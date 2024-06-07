@@ -18,6 +18,7 @@ async function UserDtl(req,res,next)
 {
         const UserDetail = await UserModel.findOne({_id:req.params.id});
 
+        //when charater chage in id
         if(!UserDetail)
         {
             next(new ErrorHandlerclass("User Not Found",404));
@@ -51,6 +52,13 @@ async function User_Delete(req,res)
 //all user fet
 async function GetAllUser(req,res,next)
 {
+        const adminData = await UserModel.find({_id : req.UserId});
+
+        if(adminData.role != 'admin')
+        {
+            next(new ErrorHandlerclass("Unathorized User",401));
+        }
+
         const UsersData = await UserModel.find();
 
         return res.status(200).json({

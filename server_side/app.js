@@ -21,7 +21,7 @@ app.use('/user',require('./route/user.route'));
 
 
 //error middelware
-app.use(ErrorHandlerMiddelware.ErrorMiddelware);
+app.use(ErrorHandlerMiddelware);
 
 //create server 
 app.listen(process.env.PORT , ()=>console.log('server start and up'));

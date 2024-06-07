@@ -10,8 +10,8 @@ const ErrorMiddelware = (err,req,res,next)=>{
         err.statuscode = 409;
     }
 
-    //id invalid
-    if(err.code === undefined)
+    //id invalid -> id legth is not match with mobgo db id length
+    if(err.code === undefined && err.statuscode === 500)
     {
         err.message = "Invalid Id";
         err.statuscode = 401;
@@ -23,6 +23,4 @@ const ErrorMiddelware = (err,req,res,next)=>{
     });
 }
 
-module.exports = {
-    ErrorMiddelware,
-}
+module.exports = ErrorMiddelware;
