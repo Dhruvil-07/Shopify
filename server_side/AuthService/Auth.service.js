@@ -30,7 +30,6 @@ async function VerifyToken(req,res,next)
     }
     catch(err)
     {
-        console.log(err);
         return res.status(501).json({status:"fail",msg:"Invalid Token"});
     }
 }

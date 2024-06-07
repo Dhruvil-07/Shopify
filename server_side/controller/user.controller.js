@@ -5,41 +5,25 @@ const ErrorHandlerclass = require('../utils/ErrorHandler');
 
 //creation contoller
 async function User_Create(req,res,next)
-{   
-    try
-    {
-        const NewUserObj = await UserModel(req.body);
-        const NewUser = await NewUserObj.save();
-        console.log(NewUser);
-        return res.status(201).json({status:"success",data:NewUser});
-    }
-    catch(err)
-    {
-        console.log(err.message);
-        console.log(err.code);
-        next(err);
-    }
+{       
+    const NewUserObj = await UserModel(req.body);
+    const NewUser = await NewUserObj.save();
+    console.log(NewUser);
+    return res.status(201).json({status:"success",data:NewUser});
 }
 
 
 //user detial get 
-async function UserDtl(req,res)
+async function UserDtl(req,res,next)
 {
-    try
-    {
         const UserDetail = await UserModel.findOne({_id:req.params.id});
 
         if(!UserDetail)
         {
-            return res.status(401).json({status:"fail",msg:"User Not Found"});    
+            next(new ErrorHandlerclass("User Not Found",404));
         }    
 
         return res.status(200).json({status:"success",data:UserDetail});
-    }
-    catch(err)
-    {
-        return res.status(500).json({status:"fail",msg:err});
-    }
 }
 
 
@@ -65,10 +49,8 @@ async function User_Delete(req,res)
 
 
 //all user fet
-async function GetAllUser(req,res)
+async function GetAllUser(req,res,next)
 {
-    try
-    {
         const UsersData = await UserModel.find();
 
         return res.status(200).json({
@@ -76,26 +58,19 @@ async function GetAllUser(req,res)
             total_User : UsersData.length,
             data : UsersData,
         })
-    }
-    catch(err)
-    {
-        return res.status(500).json({status:"failed",msg:"Internal Server Error"});
-    }
 }
 
 
 //login function
-async function Login(req,res)
+async function Login(req,res,next)
 {
-    try
-    {
         const {email,password} = req.body;
 
         const UserData = await UserModel.findOne({email:email});
 
         if(!UserData)
         {
-            return res.status(404).json({status:404,msg:"User Not Found"});
+            next(new ErrorHandlerclass("User not Found",404));
         }
 
         //pending
@@ -108,12 +83,6 @@ async function Login(req,res)
             status : "Success",
             Token : await AuthService.GenToken(UserData.id)
         })
-    }
-    catch(err)
-    {
-        console.log(err);
-        return res.status(500).json({status:500 , msg:"Intenal Server Error"});
-    }
 }
 
 

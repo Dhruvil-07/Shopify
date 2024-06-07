@@ -10,12 +10,15 @@ require("dotenv").config();
 app.use(express.json());
 app.use(express.urlencoded({extended : false}));
 
+
 //database file
 const db = require('./db');
 
 
 //routes
 app.use('/user',require('./route/user.route'));
+
+
 
 //error middelware
 app.use(ErrorHandlerMiddelware.ErrorMiddelware);
