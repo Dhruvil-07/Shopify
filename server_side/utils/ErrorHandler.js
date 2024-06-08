@@ -1,10 +1,11 @@
-class ErrorHandler extends Error
+class CustomError extends Error
 {
     constructor(message,statuscode)
     {
         super(message);
         this.statuscode = statuscode;
+        this.isOpration = true;
     }
 }
 
-module.exports = ErrorHandler;
+module.exports = CustomError;

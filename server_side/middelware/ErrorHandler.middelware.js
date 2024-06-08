@@ -1,26 +1,44 @@
+const CustomError = require('../utils/ErrorHandler');
+
 const ErrorMiddelware = (err,req,res,next)=>{
 
-    err.message = err.message || "Internal Server Error";
-    err.statuscode = err.statuscode || 500;
-
-    //dublicate user
-    if(err.code === 11000)
+    if(!(err.isOpration))
     {
-        err.message = "Already available";
-        err.statuscode = 409;
-    }
+        if(err.code === 11000) 
+            err = dubKeyerr(); 
+        else if(err.name === "CastError")
+            err = casterr();
+        else
+            err.message =  "Internal Server Error ! Try After Some Time";
+            err.statuscode =  500;
+    } 
+    errresponse(res,err);
+}
 
-    //id invalid -> id legth is not match with mobgo db id length
-    if(err.name === 'CastError')
-    {
-        err.message = "Invalid Id";
-        err.statuscode = 401;
-    }
 
+//dublicate key error function
+function dubKeyerr()
+{
+    let error = new CustomError("Already Register",409);
+    return error;
+}
+
+
+//castin error
+function casterr()
+{
+    return new CustomError("Invalid Id",401);
+}
+
+
+//function return err in response
+function errresponse(res,err)
+{
     return res.status(err.statuscode).json({
-        status : "False",
-        msg : err.message,
+        status : "Fail",
+        message : err.message,
     });
 }
+
 
 module.exports = ErrorMiddelware;

@@ -1,7 +1,5 @@
 const express = require("express");
 const app = express();
-const AuthService = require("./AuthService/Auth.service");
-const ErrorHandlerMiddelware = require('./middelware/ErrorHandler.middelware');
 
 //env file
 require("dotenv").config();
@@ -15,13 +13,28 @@ app.use(express.urlencoded({extended : false}));
 const db = require('./db');
 
 
+//auth service
+const AuthService = require("./AuthService/Auth.service");
+
+
+//error service 
+const ErrorHandlerMiddelware = require('./middelware/ErrorHandler.middelware');
+const CustomError = require("./utils/ErrorHandler");
+
+
 //routes
 app.use('/user',require('./route/user.route'));
 
 
+//handle invalid route
+app.all('*',(req,res,next)=>{
+    next(new CustomError("Invalid Route",404))
+});
+
 
 //error middelware
 app.use(ErrorHandlerMiddelware);
+
 
 //create server 
 app.listen(process.env.PORT , ()=>console.log('server start and up'));

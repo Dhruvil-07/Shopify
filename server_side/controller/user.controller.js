@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const UserModel = require("../model/user.model");
 const AuthService = require("../AuthService/Auth.service");
-const ErrorHandlerclass = require('../utils/ErrorHandler');
+const CustomError = require('../utils/ErrorHandler');
 
 //creation contoller
 async function User_Create(req,res,next)
@@ -21,7 +21,7 @@ async function UserDtl(req,res,next)
         //when charater chage in id
         if(!UserDetail)
         {
-            next(new ErrorHandlerclass("User Not Found",404));
+            next(new CustomError("User Not Found",404));
         }    
 
         return res.status(200).json({status:"success",data:UserDetail});
@@ -52,11 +52,11 @@ async function User_Delete(req,res)
 //all user fet
 async function GetAllUser(req,res,next)
 {
-        const adminData = await UserModel.find({_id : req.UserId});
-
+        const adminData = await UserModel.findOne({_id : req.UserId});
+        
         if(adminData.role != 'admin')
         {
-            next(new ErrorHandlerclass("Unathorized User",401));
+            next(new CustomError("Unathorized User",401));
         }
 
         const UsersData = await UserModel.find();
@@ -78,7 +78,7 @@ async function Login(req,res,next)
 
         if(!UserData)
         {
-            next(new ErrorHandlerclass("User not Found",404));
+            next(new CustomError("User not Found",404));
         }
 
         //pending
