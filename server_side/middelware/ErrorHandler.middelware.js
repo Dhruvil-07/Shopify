@@ -2,6 +2,7 @@ const CustomError = require('../utils/ErrorHandler');
 
 const ErrorMiddelware = (err,req,res,next)=>{
 
+    console.log(err);
     if(!(err.isOpration))
     {
         if(err.code === 11000) 

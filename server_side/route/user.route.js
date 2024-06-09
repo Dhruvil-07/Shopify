@@ -11,7 +11,6 @@ const AuthService = require("../AuthService/Auth.service");
 const UserController = require("../controller/user.controller");
 
 
-
 //user creation route
 router.post('/reg',trycatchHandler(UserController.User_Create));
 

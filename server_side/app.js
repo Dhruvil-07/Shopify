@@ -5,8 +5,8 @@ const app = express();
 require("dotenv").config();
 
 //middelware
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.urlencoded({extended : false}));
 
 
 //database file
@@ -22,8 +22,13 @@ const ErrorHandlerMiddelware = require('./middelware/ErrorHandler.middelware');
 const CustomError = require("./utils/ErrorHandler");
 
 
+//image service
+app.use('/images/category',express.static('public/category'));
+
+
 //routes
 app.use('/user',require('./route/user.route'));
+app.use('/category',require('./route/category.route'));
 
 
 //handle invalid route
