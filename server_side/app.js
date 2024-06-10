@@ -30,6 +30,7 @@ app.use('/images/category',express.static('public/category'));
 app.use('/user',require('./route/user.route'));
 app.use('/category',require('./route/category.route'));
 app.use('/subcategory',require('./route/subCategory.route'));
+app.use('/brand',require('./route/brand.route'));
 
 
 //handle invalid route
