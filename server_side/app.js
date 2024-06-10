@@ -29,6 +29,7 @@ app.use('/images/category',express.static('public/category'));
 //routes
 app.use('/user',require('./route/user.route'));
 app.use('/category',require('./route/category.route'));
+app.use('/subcategory',require('./route/subCategory.route'));
 
 
 //handle invalid route
