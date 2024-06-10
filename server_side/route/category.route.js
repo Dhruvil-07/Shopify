@@ -19,4 +19,7 @@ router.post('/reg',AuthService.VerifyToken,trycatchHandler(CategoryController.cr
 //get all category
 router.get('/',AuthService.VerifyToken,trycatchHandler(CategoryController.getAllCategory));
 
+//get specific category
+router.get('/:id',AuthService.VerifyToken,trycatchHandler(CategoryController.getSpecificCategory));
+
 module.exports = router;

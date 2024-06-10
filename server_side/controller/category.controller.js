@@ -67,7 +67,24 @@ async function getAllCategory(req, res, next) {
     });
 }
 
+//get specific category
+async function getSpecificCategory(req,res,next)
+{
+    const CategoryData = await CategoryModel.findOne({_id:req.params.id});
+
+    if(CategoryData === null)
+    {
+        return next(new CustomError("Category Not Found",404));
+    }    
+
+    return res.status(200).json({
+        msg : "Success",
+        data : CategoryData,
+    });
+}
+
 module.exports = {
     createCategory,
     getAllCategory,
+    getSpecificCategory,
 }
