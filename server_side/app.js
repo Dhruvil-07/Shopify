@@ -31,6 +31,8 @@ app.use('/user',require('./route/user.route'));
 app.use('/category',require('./route/category.route'));
 app.use('/subcategory',require('./route/subCategory.route'));
 app.use('/brand',require('./route/brand.route'));
+app.use('/varianttype',require('./route/variantType.route'));
+app.use('/variant',require('./route/variant.route'));
 
 
 //handle invalid route
