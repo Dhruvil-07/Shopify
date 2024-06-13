@@ -32,7 +32,6 @@ const categoryUpload = multer({
 
 
 //product upload
-
 const ProductStorage = multer.diskStorage({
     destination : "./public/product",
     filename : (req,file,cb)=>{
@@ -60,8 +59,36 @@ const productUpload = multer({
 
 
 
+//category upload
+const PosterStorage = multer.diskStorage({
+    destination : "./public/poster",
+    filename : (req,file,cb)=>{
+
+        const filetype = /jpg|jpeg|png/;
+        const extname = filetype.test(path.extname(file.originalname).toLowerCase());
+
+        if(extname)
+        {
+            return cb(null,`${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
+        }
+        else
+        {
+            return cb(new Error("only jpg , jpeg anfd png file allowed"));
+        }
+        
+    }
+});
+
+
+const posterUpload = multer({
+    storage : PosterStorage,
+    limits : {
+        fileSize : 1024 * 1024 * 5,
+    }
+});
 
 module.exports = {
     categoryUpload,
     productUpload,
+    posterUpload,
 };

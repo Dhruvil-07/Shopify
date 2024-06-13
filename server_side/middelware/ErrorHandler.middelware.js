@@ -2,7 +2,9 @@ const CustomError = require('../utils/ErrorHandler');
 
 const ErrorMiddelware = (err,req,res,next)=>{
 
-    console.log(err);
+    console.log(err.message);
+    console.log(err.code);
+    
     if(!(err.isOpration))
     {
         if(err.code === 11000) 
@@ -16,7 +18,7 @@ const ErrorMiddelware = (err,req,res,next)=>{
         else
             err.message =  "Internal Server Error ! Try After Some Time";
             err.statuscode =  500;
-    } 
+    }   
     errresponse(res,err);
 }
 
