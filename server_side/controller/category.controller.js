@@ -29,6 +29,7 @@ async function createCategory(req, res, next) {
         else {
             
             try {
+
                 const payload =
                 {
                     name: req.body.name,
@@ -45,9 +46,9 @@ async function createCategory(req, res, next) {
             }
             catch (err) {
                 if(err.code === 11000) 
-                    fs.unlink(`./public/category/${req.file.filename}`,(err)=>{
-                        console.log(err);
-                    });
+                        fs.unlink(`./public/category/${req.file.filename}`,(err)=>{
+                            console.log(err);
+                        });
                 next(err);
             }
 

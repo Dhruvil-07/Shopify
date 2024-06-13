@@ -9,6 +9,10 @@ const ErrorMiddelware = (err,req,res,next)=>{
             err = dubKeyerr(); 
         else if(err.name === "CastError")
             err = casterr();
+        else if(err.code === "LIMIT_UNEXPECTED_FILE")
+            err = unexpectedFiled();
+        else if(err.code === "LIMIT_FILE_SIZE")
+            err = FileLimitBounce();
         else
             err.message =  "Internal Server Error ! Try After Some Time";
             err.statuscode =  500;
@@ -30,6 +34,19 @@ function casterr()
 {
     return new CustomError("Invalid Id",401);
 }
+
+//unexpected files
+function unexpectedFiled()
+{
+    return new CustomError("Only 5 image allowed",401);
+}
+
+//file limit bounce
+function FileLimitBounce()
+{
+    return new CustomError("File To Large",401);
+}
+
 
 
 //function return err in response

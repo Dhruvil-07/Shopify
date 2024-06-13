@@ -24,6 +24,7 @@ const CustomError = require("./utils/ErrorHandler");
 
 //image service
 app.use('/images/category',express.static('public/category'));
+app.use('/images/product',express.static('public/product'));
 
 
 //routes
@@ -33,6 +34,7 @@ app.use('/subcategory',require('./route/subCategory.route'));
 app.use('/brand',require('./route/brand.route'));
 app.use('/varianttype',require('./route/variantType.route'));
 app.use('/variant',require('./route/variant.route'));
+app.use('/product',require('./route/product.route'));
 
 
 //handle invalid route

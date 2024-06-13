@@ -31,7 +31,7 @@ async function RegNewVariant(req,res,next)
 //get new brand
 async function getAllVariangt(req,res,next)
 {
-    const Alldata = await VariantModel.find();
+    const Alldata = await VariantModel.find().populate("VariantTypeId");
 
     return res.status(200).json({
         status : "Success",
@@ -43,7 +43,7 @@ async function getAllVariangt(req,res,next)
 //get specific brand
 async function getSpecificVariant(req,res,next)
 {   
-    const data = await VariantModel.findById({_id:req.params.id});
+    const data = await VariantModel.findById({_id:req.params.id}).populate("VariantTypeId");
     
     if(!data)
     {
