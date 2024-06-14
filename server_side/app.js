@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cors = require('cors');
 
 //env file
 require("dotenv").config();
@@ -7,6 +8,8 @@ require("dotenv").config();
 //middelware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cors());
+
 
 
 //database file
@@ -37,6 +40,7 @@ app.use('/varianttype',require('./route/variantType.route'));
 app.use('/variant',require('./route/variant.route'));
 app.use('/product',require('./route/product.route'));
 app.use('/poster',require('./route/poster.route'));
+app.use('/coupon',require('./route/coupon.route'));
 
 
 

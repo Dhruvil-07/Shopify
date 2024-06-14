@@ -73,7 +73,8 @@ async function RegNewProduct(req,res,next){
 //get all product 
 async function GetAllProducts(req,res,next)
 {
-    const AllData = await ProductModel.find()
+    console.log("hitted");
+    const AllData = await ProductModel.find(req.query)
                           .populate("proCategoryId",'id name')
                           .populate("proSubCategoryId",'id name')
                           .populate("proBrandId",'id name')
