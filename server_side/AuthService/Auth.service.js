@@ -17,7 +17,7 @@ async function VerifyToken(req,res,next)
 
         if(!authorization)
         {
-            return res.status(404).json({status:"fail",msg:"Token Not Found"});
+            return res.status(404).json({status:"fail",message:"Token Not Found"});
         }
 
         const token = authorization.split(' ')[1];

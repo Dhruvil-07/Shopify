@@ -74,6 +74,8 @@ async function Login(req,res,next)
 {
         const {email,password} = req.body;
 
+        console.log(req.body);
+
         const UserData = await UserModel.findOne({email:email});
 
         if(!UserData)
@@ -87,7 +89,7 @@ async function Login(req,res,next)
         //     console.log("not match");
         // }    
 
-        return res.status(200).json({
+        return res.status(201).json({
             status : "Success",
             Token : await AuthService.GenToken(UserData.id)
         })

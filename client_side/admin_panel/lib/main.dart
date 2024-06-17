@@ -1,3 +1,6 @@
+import 'package:admin_panel/Utils/Instances.dart';
+import 'package:admin_panel/view/LoginView.dart';
+import 'package:admin_panel/view/PanelView.dart';
 import 'package:flutter/material.dart';
 
 void main()
@@ -10,6 +13,10 @@ class Shopify_admin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.red,);
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: PanelView(),
+      theme: ThemeData.dark(),
+    );
   }
 }
