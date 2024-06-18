@@ -1,6 +1,7 @@
 import 'package:admin_panel/Utils/Instances.dart';
 import 'package:admin_panel/view/CategoryView/CategoryView.dart';
 import 'package:admin_panel/view/DashboardView/DashboardView.dart';
+import 'package:admin_panel/view/SubCategory/SubCategoryView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -20,7 +21,7 @@ class _PanelViewState extends State<PanelView> {
     "assets/icons/menu_setting.svg","assets/icons/menu_doc.svg","assets/icons/menu_notification.svg",
   ];
 
-  List<Widget> pages = [DashBoardView(),Categoryview()];
+  List<Widget> pages = [DashBoardView(),Categoryview(),SubCategoryView()];
 
   int index = 0;
 

@@ -3,6 +3,8 @@ import 'package:admin_panel/Services/SharedPreferencesService.dart';
 import 'package:admin_panel/controller/CategoryController.dart';
 import 'package:admin_panel/controller/LoginController.dart';
 import 'package:admin_panel/controller/ProductController.dart';
+import 'package:admin_panel/controller/SubCategoryController.dart';
+import 'package:admin_panel/model/SubCategoryModel.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../Services/httpService.dart';
@@ -11,6 +13,7 @@ import '../Services/httpService.dart';
 LoginController  loginController = Get.put(LoginController());
 ProductController productController = Get.put(ProductController());
 CategoryController categoryController = Get.put(CategoryController());
+SubCategoryControler subCategoryControler = Get.put(SubCategoryControler());
 
 
 //ApiService Instance
