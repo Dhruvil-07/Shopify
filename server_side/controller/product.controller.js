@@ -140,7 +140,7 @@ async function DeleteProduct(req,res,next)
 
         return res.status(200).json({
             status : "Success",
-            msg : "Product Deleted SuccessFully",
+            message: "Product Deleted SuccessFully",
         })
     }
 }

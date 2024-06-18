@@ -126,7 +126,7 @@ class _DashBoardViewState extends State<DashBoardView> {
                                     DataCell(Text('${productController.ProductData[index].price}')),
                                     DataCell(IconButton(icon: Icon(Icons.edit) , onPressed: (){},)),
                                     DataCell(IconButton(icon: Icon(Icons.delete , color: Colors.red,) , onPressed: (){
-
+                                      productController.DeleteProduct(context, index);
                                     },)),
                                   ]);
                                 }),

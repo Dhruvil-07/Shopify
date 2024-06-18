@@ -72,4 +72,29 @@ class HttpService
          }
      }
 
+     //function for delete request
+     Future<dynamic> DeleteApi(BuildContext context,String url) async
+     {
+        try
+        {
+            var apiResponse = await http.delete(Uri.parse(url) ,
+              headers: RequestHeader,
+            );
+            var decodedData = jsonDecode(apiResponse.body);
+
+            if(apiResponse.statusCode != 200)
+            {
+              print(decodedData);
+              ShowSnakbar(context, decodedData["message"]);
+              return;
+            }
+
+            return decodedData;
+        }
+        catch(e)
+       {
+         print(e);
+       }
+     }
+
 }
