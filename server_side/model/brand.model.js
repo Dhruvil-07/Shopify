@@ -11,7 +11,7 @@ const BrandSchema = mongoose.Schema({
         ref : 'SubCategory',
         require : true,
     }
-});
+},{ timestamps: true });
 
 
 //subcategory Model

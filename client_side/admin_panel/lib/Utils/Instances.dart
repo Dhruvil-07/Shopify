@@ -1,5 +1,6 @@
 import 'package:admin_panel/Services/LocalStorageService.dart';
 import 'package:admin_panel/Services/SharedPreferencesService.dart';
+import 'package:admin_panel/controller/CategoryController.dart';
 import 'package:admin_panel/controller/LoginController.dart';
 import 'package:admin_panel/controller/ProductController.dart';
 import 'package:get/get.dart';
@@ -9,6 +10,7 @@ import '../Services/httpService.dart';
 //getx controller instaces
 LoginController  loginController = Get.put(LoginController());
 ProductController productController = Get.put(ProductController());
+CategoryController categoryController = Get.put(CategoryController());
 
 
 //ApiService Instance

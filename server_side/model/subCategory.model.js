@@ -12,7 +12,7 @@ const SubCategorySchema = mongoose.Schema({
         ref : 'category',
         require : true,
     }
-});
+},{ timestamps: true });
 
 
 //subcategory Model

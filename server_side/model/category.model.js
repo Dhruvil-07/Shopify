@@ -11,7 +11,7 @@ const categorySchema = mongoose.Schema({
         type : String,
         require : true,
     }
-});
+},{ timestamps: true });
 
 
 //Category model
