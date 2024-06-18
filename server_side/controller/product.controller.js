@@ -5,6 +5,7 @@ const { productUpload } = require('../fileupload');
 const CustomError = require('../utils/ErrorHandler');
 const multer = require("multer");
 const fs = require('fs');
+const { findByIdAndDelete } = require("../model/variantType.model");
 
 
 //create new product 
@@ -109,8 +110,45 @@ async function GetspecificProduct(req,res,next)
 }
 
 
+//delete product
+async function DeleteProduct(req,res,next)
+{
+    const UserData = await UserModel.findOne({ _id: req.UserId });
+
+    if (UserData.role != 'admin') {
+        return next(new CustomError("Unauthorize User", 401));
+    }
+
+    const ProductData = await ProductModel.findById(req.params.id);
+                    
+    if(!ProductData)
+    {
+        return next(new CustomError("Product Not Register",401));
+    }
+
+    var images = ProductData["images"];
+
+    const DelProduct = await ProductModel.findByIdAndDelete(req.params.id);
+
+    if(DelProduct)
+    {
+        images.forEach((data)=>{
+            fs.unlink(`./public/product/${data["url"].slice(37,61)}`,(err)=>{
+                console.log()
+            });
+        });
+
+        return res.status(200).json({
+            status : "Success",
+            msg : "Product Deleted SuccessFully",
+        })
+    }
+}
+
+
 module.exports = {
     RegNewProduct,
     GetAllProducts,
     GetspecificProduct,
+    DeleteProduct,
 }

@@ -14,6 +14,6 @@ const ProductController = require('../controller/product.controller');
 router.post('/reg',AuthService.VerifyToken,trycatchHandler(ProductController.RegNewProduct));
 router.get('/',AuthService.VerifyToken,trycatchHandler(ProductController.GetAllProducts));
 router.get('/:id',AuthService.VerifyToken,trycatchHandler(ProductController.GetspecificProduct));
-
+router.delete('/:id',AuthService.VerifyToken,trycatchHandler(ProductController.DeleteProduct));
 
 module.exports = router;
