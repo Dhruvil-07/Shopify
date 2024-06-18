@@ -2,11 +2,13 @@ import 'package:admin_panel/Services/LocalStorageService.dart';
 import 'package:admin_panel/Services/SharedPreferencesService.dart';
 import 'package:admin_panel/controller/BrandController.dart';
 import 'package:admin_panel/controller/CategoryController.dart';
+import 'package:admin_panel/controller/CouponController.dart';
 import 'package:admin_panel/controller/LoginController.dart';
 import 'package:admin_panel/controller/ProductController.dart';
 import 'package:admin_panel/controller/SubCategoryController.dart';
 import 'package:admin_panel/controller/VariantController.dart';
 import 'package:admin_panel/controller/VariantTypeController.dart';
+import 'package:admin_panel/model/CouponModel.dart';
 import 'package:admin_panel/model/SubCategoryModel.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,6 +22,7 @@ SubCategoryControler subCategoryControler = Get.put(SubCategoryControler());
 BrandController brandController = Get.put(BrandController());
 VariantTypeController variantTypeController = Get.put(VariantTypeController());
 VariantController variantController = Get.put(VariantController());
+CouponController couponController = Get.put(CouponController());
 
 
 //ApiService Instance

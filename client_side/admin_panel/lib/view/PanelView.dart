@@ -1,7 +1,11 @@
 import 'package:admin_panel/Utils/Instances.dart';
 import 'package:admin_panel/view/BrandView/BrandView.dart';
 import 'package:admin_panel/view/CategoryView/CategoryView.dart';
+import 'package:admin_panel/view/CouponView/CouponView.dart';
 import 'package:admin_panel/view/DashboardView/DashboardView.dart';
+import 'package:admin_panel/view/NotificationView/NotificationView.dart';
+import 'package:admin_panel/view/OrderView/OrderView.dart';
+import 'package:admin_panel/view/PosterView/PosterView.dart';
 import 'package:admin_panel/view/SubCategory/SubCategoryView.dart';
 import 'package:admin_panel/view/VariantTypeView/VariantTypeView.dart';
 import 'package:admin_panel/view/VariantView/VariantView.dart';
@@ -24,7 +28,7 @@ class _PanelViewState extends State<PanelView> {
     "assets/icons/menu_setting.svg","assets/icons/menu_doc.svg","assets/icons/menu_notification.svg",
   ];
 
-  List<Widget> pages = [DashBoardView(),Categoryview(),SubCategoryView(),BrandView(),VariantTypeView(),VariantView()];
+  List<Widget> pages = [DashBoardView(),Categoryview(),SubCategoryView(),BrandView(),VariantTypeView(),VariantView(),OrderView(),CouponView(),PosterView(),NotificationView()];
 
   int index = 0;
 
