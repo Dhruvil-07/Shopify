@@ -5,6 +5,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 import '../../Utils/Instances.dart';
 import '../../Utils/Text.dart';
+import 'Component/CategoryComponent.dart';
 
 
 class Categoryview extends StatefulWidget {
@@ -67,7 +68,9 @@ class _CategoryviewState extends State<Categoryview> {
 
 
                               ElevatedButton.icon(
-                                onPressed: (){},
+                                onPressed: (){
+                                  showAddCategoryForm(context,null);
+                                },
                                 icon: Icon(Icons.add),
                                 label: Text("New Add"),
                               ),

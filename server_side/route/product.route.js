@@ -16,4 +16,6 @@ router.get('/',AuthService.VerifyToken,trycatchHandler(ProductController.GetAllP
 router.get('/:id',AuthService.VerifyToken,trycatchHandler(ProductController.GetspecificProduct));
 router.delete('/:id',AuthService.VerifyToken,trycatchHandler(ProductController.DeleteProduct));
 
+
+
 module.exports = router;

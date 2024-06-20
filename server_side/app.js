@@ -11,7 +11,6 @@ app.use(express.json());
 app.use(cors());
 
 
-
 //database file
 const db = require('./db');
 

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const UserModel = require('../model/user.model');
 const ProductModel = require('../model/product.model');
-const { productUpload } = require('../fileupload');
+const { productUpload , categoryUpload } = require('../fileupload');
 const CustomError = require('../utils/ErrorHandler');
 const multer = require("multer");
 const fs = require('fs');
